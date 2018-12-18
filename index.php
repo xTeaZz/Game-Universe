@@ -1,7 +1,13 @@
 <?php
 
     require "vendor/autoload.php";
-    use app\models\Commentary;
+    /*
+    use App\controllers\ControllerAdmin;
+    use App\controllers\ControllerHome;
+    */
+    require "app\controllers\ControllerAdmin.php";
+    require "app\controllers\ControllerHome.php";
+
 
     if (isset($_GET['action'])) {
         if ($_GET['action'] == 'episodes') {
