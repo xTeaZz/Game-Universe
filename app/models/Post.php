@@ -1,6 +1,8 @@
 <?php
 
-  require_once'Database.php';
+namespace App\models;
+
+  require_once 'Database.php';
 
   class Post extends Database {
 

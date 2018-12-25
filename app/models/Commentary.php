@@ -1,5 +1,7 @@
 <?php
 
+namespace App\models;
+
   require_once'Database.php';
 
   class Commentary extends Database {

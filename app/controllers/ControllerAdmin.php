@@ -1,5 +1,7 @@
 <?php
 
+namespace App\controllers;
+
 class ControllerAdmin {
 
   public function adminView() {
