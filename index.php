@@ -2,13 +2,8 @@
 
     require "vendor/autoload.php";
 
-    use App\controllers\ControllerAdmin;
-    use App\controllers\ControllerHome;
-
-    /*
-    require "app\controllers\ControllerAdmin.php";
-    require "app\controllers\ControllerHome.php";
-*/
+    use Controllers\ControllerAdmin;
+    use Controllers\ControllerHome;
 
     if (isset($_GET['action'])) {
         if ($_GET['action'] == 'episodes') {

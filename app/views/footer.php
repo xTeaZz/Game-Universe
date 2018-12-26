@@ -4,4 +4,5 @@
   <script  src="src/js/main.js"></script>
   <script  src="vendor/tinymce/plugins/tinymce/tinymce.min.js"></script>
   <script  src="vendor/tinymce/init-tinymce.js"></script>
+  <script src='https://www.google.com/recaptcha/api.js'></script>
 </footer>

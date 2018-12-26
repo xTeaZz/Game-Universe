@@ -1,14 +1,10 @@
 <?php
 
-namespace App\controllers;
-use App\models\Post;
-use App\models\User;
-use App\models\Commentary;
-/*
-require 'app/models/User.php';
-require 'app/models/Post.php';
-require 'app/models/Commentary.php';
-*/
+namespace Controllers;
+use Models\Post;
+use Models\User;
+use Models\Commentary;
+
   class ControllerHome {
 
     public function homeView() {

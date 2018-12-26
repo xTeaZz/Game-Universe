@@ -10,8 +10,8 @@
   <meta property="og:url" content="http://www.jonathan-ballauri.com/index.php" />
   <meta property="og:image" content="http://www.jonathan-ballauri.com/index.php" />
   <meta property="og:description" content="Game Universe" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="vendor/fontawesome/all.min.css">
   <link rel="stylesheet" href="src/css/style.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>

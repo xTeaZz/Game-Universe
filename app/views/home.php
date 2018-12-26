@@ -3,7 +3,7 @@
 <html lang="fr" dir="ltr">
   <!--Head-->
   <?php
-    $title = "Billet simple pour l'Alaska";
+    $title = "Game Universe";
     require'head.php';
     ?>
   <!--Body-->
@@ -26,8 +26,7 @@
     <section class="herosection sectionmargin">
       <div class="hero">
         <div class="herocaption center">
-          <h1 class="">Un billet simple pour l'Alaska</h1>
-          <p>Un Roman écrit par Jean Forteroche</p>
+          <h1>Game Universe</h1>
         </div>
       </div>
     </section>
@@ -35,7 +34,7 @@
     <section class="container sectionmargin row justify-content-around" id="episodes">
     <?php while($p = $post->fetch()) { ?>
       <div class="card col-4" style="width: 18rem;">
-        <img class="card-img-top" src="public/pictures/Alaska.jpg" alt="Card image cap">
+        <img class="card-img-top" src="src/images/test.png" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title"><?= $p['title'] ?></h5>
           <p class="card-text"><?= $p['message'] = mb_substr($p['message'], 0, strpos($p['message'], ' ', 100));?></p>

@@ -7,16 +7,32 @@ namespace Composer\Autoload;
 class ComposerStaticInit9c1d1f3323cecd3765468b77c0624ce7
 {
     public static $prefixLengthsPsr4 = array (
-        'A' => 
+        'R' => 
         array (
-            'App\\' => 4,
+            'ReCaptcha\\' => 10,
+        ),
+        'M' => 
+        array (
+            'Models\\' => 7,
+        ),
+        'C' => 
+        array (
+            'Controllers\\' => 12,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'App\\' => 
+        'ReCaptcha\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/app',
+            0 => __DIR__ . '/..' . '/google/recaptcha/src/ReCaptcha',
+        ),
+        'Models\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app/models',
+        ),
+        'Controllers\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app/controllers',
         ),
     );
 
