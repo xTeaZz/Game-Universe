@@ -53,7 +53,14 @@ namespace Models;
     public function sign() {
       $db = Database::getConnection();
       if(isset($_POST['buttonSign'])) {
-        if(!empty($_POST['alias']) AND !empty($_POST['mail']) AND !empty($_POST['pass'])) {
+          if($_POST['g-recaptcha-response'] != ''){
+            $recaptcha = new \ReCaptcha\ReCaptcha('6LdR-IQUAAAAAMqd2np9IqiKbPaZrA4V2IHltwmG');
+            $resp = $recaptcha->verify($_POST['g-recaptcha-response']);
+              if ($resp->isSuccess()) {
+                } else {
+                $errors = $resp->getErrorCodes();
+              }
+          if(!empty($_POST['alias']) AND !empty($_POST['mail']) AND !empty($_POST['pass'])) {
           $alias = htmlspecialchars($_POST['alias']);
           $mail = htmlspecialchars($_POST['mail']);
           $pass = password_hash($_POST['pass'], PASSWORD_DEFAULT);
@@ -83,6 +90,10 @@ namespace Models;
         else {
           $error= "Tout les champs doivent être complétés";
         }
+      }
+      else {
+        $error= "Captcha non rempli";
+      }
       }
       if(isset($error)) {
         echo $error;

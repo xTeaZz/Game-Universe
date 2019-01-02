@@ -39,17 +39,6 @@
                   <input type="password" class="form-control" name="pass" placeholder="Mot de Passe">
                 </div>
                 <div class="form-group">
-                <?php
-                  if(isset($_POST['g-recaptcha-response'])){
-                    $recaptcha = new \ReCaptcha\ReCaptcha('6LdR-IQUAAAAAMqd2np9IqiKbPaZrA4V2IHltwmG');
-                    $resp = $recaptcha->verify($_POST['g-recaptcha-response']);
-                    if ($resp->isSuccess()) {
-                        // Verified!
-                    } else {
-                        $errors = $resp->getErrorCodes();
-                    }
-                  }
-                ?>
                   <div class="g-recaptcha" data-sitekey="6LdR-IQUAAAAAP_fREsTgi9YR7x8Q-BVj3jLGfHy"></div>
                 </div>
               </div>
