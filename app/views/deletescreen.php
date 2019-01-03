@@ -23,7 +23,7 @@
         <?php while($p = $post->fetch()) { ?>
         <div class="rows">
           <div class="card marginlist">
-            <img class="card-img-top" src="public/pictures/Alaska.jpg" alt="Card image cap">
+            <img class="card-img-top" src="src/images/test.png" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title"><?= $p['title'] ?></h5>
             <p class="card-text"><?= $p['message'] = mb_substr($p['message'], 0, strpos($p['message'], ' ', 100));?></p>

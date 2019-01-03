@@ -114,5 +114,41 @@ namespace Models;
       }
     }
 
+    public function createReply() {
+      session_start();
+      $db = Database::getConnection();
+      if (isset($_SESSION['id'])) {
+        if (isset($_POST['comment'])) {
+          if(!empty($_POST['comment'])){
+            $content = htmlspecialchars($_POST['comment']);
+            $commentId = ($_GET['id']);
+            $userid= ($_SESSION['id']);
+            $id_post = ($_GET['post']);
+            $insert = $db->prepare('INSERT INTO reply(id_user, id_comment, id_post, content) VALUES (?, ?, ?, ?)');
+            $result = $insert->execute(array($commentId, $userid, $id_post, $content));
+
+            $info = "Votre réponse a bien était crée";
+          }
+          else {
+          $info = "Veuillez remplir tous les champs";
+        }
+      }
+    }
+    else {
+      $info ="Vous devez être connecter pour réaliser cette action";
+    }
+      if (isset($info)) {
+        echo $info;
+      }
+    }
+
+    public function listReply() {
+      $db = Database::getConnection();
+      $postId = htmlspecialchars($_GET['id']);
+      $commentary = $db->prepare('SELECT *, reply.id AS c_id FROM reply INNER JOIN user ON reply.id_user = user.id WHERE id_post = ? ORDER BY reply.id DESC');
+      $commentary->execute(array($postId));
+      return $commentary;
+    }
+
   }
 ?>

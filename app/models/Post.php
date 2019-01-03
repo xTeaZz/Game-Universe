@@ -31,9 +31,9 @@ namespace Models;
         if(!empty($_POST['title']) AND !empty($_POST['postText'])){
           $postTitle = htmlspecialchars($_POST['title']);
           $postMessage = ($_POST['postText']);
-
-          $insert = $db->prepare('INSERT INTO post(title, message, creation_date) VALUES (?, ?,NOW())');
-          $insert->execute(array($postTitle, $postMessage));
+          $categorie = $_POST['categories'];
+          $insert = $db->prepare('INSERT INTO post(title, message, categorie, creation_date) VALUES (?, ?, ?, NOW())');
+          $insert->execute(array($postTitle, $postMessage, $categorie));
 
           $info = "Votre Article a bien était crée";
         } else {

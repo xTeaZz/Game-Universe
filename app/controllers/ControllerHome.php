@@ -73,6 +73,11 @@ use Models\Commentary;
       $comment = $commentary->createCommentary();
     }
 
+    public function createreply() {
+      $reply = new Commentary();
+      $commentReply = $reply->createReply();
+    }
+
     public function reportCommentary() {
       $report = new Commentary();
       $comment = $report->reportCommentary();

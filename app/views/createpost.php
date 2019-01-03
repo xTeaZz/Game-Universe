@@ -30,7 +30,17 @@
           <label for="postText">Texte</label>
           <textarea name="postText" class="tinymce"></textarea>
         </div>
-        <input type="submit" class="btn btn-success" name="submit" value="Envoyer"></input>
+        <div class="reply">
+          <select class="form-control" name="categories">
+            <option>Test</option>
+            <option>MMORPG</option>
+            <option>Shooter</option>
+            <option>Combat</option>
+            <option>Stratégie</option>
+            <option>Course</option>
+          </select>
+        </div>
+        <input type="submit" class="btn btn-success" name="submit" value="Envoyer">
       </form>
     </section>
     <?php require'footer.php'; ?>
