@@ -82,14 +82,14 @@
                     </div>
                   <a href="index.php?action=report&id=<?= $c['c_id'] ?>" class="btn btn-danger">Signaler</a>
                 </div>
-                <?php while($c = $commentary->fetch()) { ?>
+                <?php while($r = $reply->fetch()) { ?>
           <div class="card">
             <div class="card-header">
               <?= $c['alias'] ?>
             </div>
             <div class="card-body">
               <blockquote class="blockquote mb-0">
-                <p><?= $c['comment_text'] ?></p>
+                <p><?= $r['content'] ?></p>
                 <a href="index.php?action=report&id=<?= $c['c_id'] ?>" class="btn btn-danger">Signaler</a>
               </blockquote>
             </div>

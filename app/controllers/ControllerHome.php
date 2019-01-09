@@ -18,6 +18,10 @@ use Models\Commentary;
       $user = $userclass->sign();
     }
 
+    public function memberspace() {
+      require 'app/views/memberspace.php';
+    }
+
     public function bioView() {
       require 'app/views/bio.php';
     }
@@ -28,6 +32,7 @@ use Models\Commentary;
       $post = $getpost->getPost();
       $getcomment = new Commentary();
       $commentary = $getcomment->listCommentary();
+      $reply = $getcomment->listReply();
       require 'app/views/article.php';
     }
 
@@ -81,6 +86,12 @@ use Models\Commentary;
     public function reportCommentary() {
       $report = new Commentary();
       $comment = $report->reportCommentary();
+    }
+
+    public function deleteUser() {
+      $delete = new User();
+      $user = $delete->deleteUser();
+      $delete->disconnect();
     }
 
   }

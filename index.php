@@ -29,6 +29,7 @@
         }
         elseif ($_GET['action'] == 'reply') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
+                var_dump(($_GET['post']), ($_GET['id']));
                 $controller = new ControllerHome();
                 $controller->createreply();
             }
@@ -115,6 +116,19 @@
             echo 'Erreur Aucune page trouvé';
         }
         }
+        elseif ($_GET['action'] == 'deleteuser') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                $controller = new ControllerHome();
+                $controller->deleteUser();
+            }
+            else {
+                echo 'Erreur Aucune page trouvé';
+            }
+            }
+        elseif ($_GET['action'] == 'member') {
+            $controller = new ControllerHome();
+            $controller->memberspace();
+            }
         elseif ($_GET['action'] == 'deletecommentary') {
         if (isset($_GET['id']) && $_GET['id'] > 0) {
             $controller = new ControllerAdmin();

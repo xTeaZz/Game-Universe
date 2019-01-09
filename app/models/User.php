@@ -103,6 +103,25 @@ namespace Models;
       }
     }
 
+    public function deleteUser() {
+      $db = Database::getConnection();
+      if(isset($_GET['id']) AND !empty($_GET['id'])) {
+        $delete_user = htmlspecialchars($_GET['id']);
+
+        $delete = $db->prepare('DELETE FROM user WHERE id = ?');
+        $delete->execute(array($delete_user));
+        session_destroy();
+
+        $info = "Votre Compte a bien était supprimer";
+      }
+      else {
+        $info = "Une erreur est survenue";
+      }
+      if (isset($info)) {
+        echo $info;
+      }
+    }
+
   }
 
 ?>

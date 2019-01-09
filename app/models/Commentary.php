@@ -125,7 +125,7 @@ namespace Models;
             $userid= ($_SESSION['id']);
             $id_post = ($_GET['post']);
             $insert = $db->prepare('INSERT INTO reply(id_user, id_comment, id_post, content) VALUES (?, ?, ?, ?)');
-            $result = $insert->execute(array($commentId, $userid, $id_post, $content));
+            $result = $insert->execute(array($userid, $commentId, $id_post, $content));
 
             $info = "Votre réponse a bien était crée";
           }
@@ -145,9 +145,9 @@ namespace Models;
     public function listReply() {
       $db = Database::getConnection();
       $postId = htmlspecialchars($_GET['id']);
-      $commentary = $db->prepare('SELECT *, reply.id AS c_id FROM reply INNER JOIN user ON reply.id_user = user.id WHERE id_post = ? ORDER BY reply.id DESC');
-      $commentary->execute(array($postId));
-      return $commentary;
+      $reply = $db->prepare('SELECT user.alias,reply.content, reply.id_comment, reply.id  FROM reply INNER JOIN user ON reply.id_user = user.id WHERE id_post = ? ORDER BY reply.id DESC');
+      $reply->execute(array($postId));
+      return $reply;
     }
 
   }
