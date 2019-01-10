@@ -48,6 +48,12 @@ use Models\Commentary;
       require 'app/views/episodes.php';
     }
 
+    public function listCategorie() {
+      $listpost = new Post();
+      $post = $listpost->listPostBy();
+      require 'app/views/episodes.php';
+    }
+
     public function sign() {
       $listpost = new Post();
       $post = $listpost->listPost();

@@ -14,6 +14,30 @@
         $controller = new ControllerHome();
         $controller->login();
         }
+        elseif ($_GET['action'] == 'Test') {
+            $controller = new ControllerHome();
+            $controller->listCategorie();
+        }
+        elseif ($_GET['action'] == 'Mmorpg') {
+            $controller = new ControllerHome();
+            $controller->listCategorie();
+        }
+        elseif ($_GET['action'] == 'Shooter') {
+            $controller = new ControllerHome();
+            $controller->listCategorie();
+        }
+        elseif ($_GET['action'] == 'Combat') {
+            $controller = new ControllerHome();
+            $controller->listCategorie();
+        }
+        elseif ($_GET['action'] == 'Stratégie') {
+            $controller = new ControllerHome();
+            $controller->listCategorie();
+        }
+        elseif ($_GET['action'] == 'Course') {
+            $controller = new ControllerHome();
+            $controller->login();
+        }      
         elseif ($_GET['action'] == 'signin') {
         $controller = new ControllerHome();
         $controller->signuser();

@@ -7,12 +7,26 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="?action=episodes">Actualités<span class="sr-only"></span></a>
+      <li class="nav-item">
+          <a href="index.php?action=episodes" class="btn btn-secondary">Actualités</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="?action=bio">Catégories<span class="sr-only"></span></a>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Catégories
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#">Test</a>
+              <a class="dropdown-item" href="#">MMORPG</a>
+              <a class="dropdown-item" href="#">Shooter</a>
+              <a class="dropdown-item" href="#">Combat</a>
+              <a class="dropdown-item" href="#">Stratégie</a>
+              <a class="dropdown-item" href="#">Course</a>
+            </div>
+          </div>
         </li>
+      </ul>
+    </div>
       </ul>
     </div>
       <p class="textcolor pheader">Bonjour <?=$_SESSION['alias']?></p>

@@ -31,6 +31,7 @@
           <textarea name="postText" class="tinymce"></textarea>
         </div>
         <div class="reply">
+          <label for="title">Catégories</label>
           <select class="form-control" name="categories">
             <option>Test</option>
             <option>MMORPG</option>

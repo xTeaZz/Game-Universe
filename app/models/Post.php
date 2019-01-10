@@ -17,6 +17,7 @@ namespace Models;
         $post = $post->fetch();
         $title = $post['title'];
         $message = $post['message'];
+        $categorie = $post['categorie'];
       } else {
         echo "Article Introuvable";
       }
@@ -55,8 +56,9 @@ namespace Models;
             $update_post = htmlspecialchars($_GET['id']);
           $post_title = htmlspecialchars($_POST['title']);
           $post_message =($_POST['postText']);
-          $update = $db->prepare('UPDATE post SET title = ?, message = ? WHERE id = ?');
-          $update->execute(array($post_title, $post_message, $update_post));
+          $categorie = $_POST['categories'];
+          $update = $db->prepare('UPDATE post SET title = ?, message = ?, categorie = ? WHERE id = ?');
+          $update->execute(array($post_title, $post_message, $categorie, $update_post));
           $info = "Votre Article a bien était modifier";
           }
         } else {
@@ -74,6 +76,14 @@ namespace Models;
     public function listPost() {
       $db = Database::getConnection();
       $post = $db->query('SELECT * FROM post ORDER BY id DESC');
+      return $post;
+    }
+
+    public function listPostBy() {
+      $db = Database::getConnection();
+      $action = htmlspecialchars($_GET['action']);
+      $post = $db->prepare('SELECT * FROM post WHERE categorie = ? ORDER BY id DESC');
+      $post->execute(array($action));
       return $post;
     }
 

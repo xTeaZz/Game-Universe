@@ -110,7 +110,6 @@ namespace Models;
 
         $delete = $db->prepare('DELETE FROM user WHERE id = ?');
         $delete->execute(array($delete_user));
-        session_destroy();
 
         $info = "Votre Compte a bien était supprimer";
       }

@@ -20,7 +20,7 @@
       }
     ?>
     <section class="container paddingtop">
-      <h1 class="titlestyle">Création d'article</h1>
+      <h1 class="titlestyle">Modification d'article</h1>
       <form action="" method="post">
         <div class="form-group">
           <label for="title">Titre</label>
@@ -30,7 +30,18 @@
           <label for="postText">Texte</label>
           <textarea name="postText" class="tinymce"><?= $post['message']?></textarea>
         </div>
-        <input type="submit" class="btn btn-success" name="submit" value="Envoyer"></input>
+        <div class="reply">
+          <label for="title">Catégories</label>
+          <select class="form-control" name="categories">
+            <option>Test</option>
+            <option>MMORPG</option>
+            <option>Shooter</option>
+            <option>Combat</option>
+            <option>Stratégie</option>
+            <option>Course</option>
+          </select>
+        </div>
+        <input type="submit" class="btn btn-success" name="submit" value="Envoyer">
       </form>
     </section>
     <?php require'footer.php'; ?>
