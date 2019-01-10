@@ -16,12 +16,12 @@
               Catégories
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="#">Test</a>
-              <a class="dropdown-item" href="#">MMORPG</a>
-              <a class="dropdown-item" href="#">Shooter</a>
-              <a class="dropdown-item" href="#">Combat</a>
-              <a class="dropdown-item" href="#">Stratégie</a>
-              <a class="dropdown-item" href="#">Course</a>
+            <a class="dropdown-item" href="index.php?action=Test">Test</a>
+              <a class="dropdown-item" href="index.php?action=Mmorpg">MMORPG</a>
+              <a class="dropdown-item" href="index.php?action=Shooter">Shooter</a>
+              <a class="dropdown-item" href="index.php?action=Combat">Combat</a>
+              <a class="dropdown-item" href="index.php?action=Stratégie">Stratégie</a>
+              <a class="dropdown-item" href="index.php?action=Course">Course</a>
             </div>
           </div>
         </li>

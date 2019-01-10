@@ -121,6 +121,44 @@ namespace Models;
       }
     }
 
+    public function changeEmail() {
+      $db = Database::getConnection();
+      if(isset($_POST['changeEmail'])) {
+        $newEmail = htmlspecialchars($_POST['newEmail']);
+        session_start();
+        $idUser = $_SESSION['id'];
+
+        $update = $db->prepare('UPDATE user SET email = ? WHERE id = ?');
+        $update->execute(array($newEmail, $idUser));
+
+        $info = "Votre Email a était modifier";
+      }
+      else {
+        $info = "Une erreur est survenue";
+      }
+      if (isset($info)) {
+        echo $info;
+      }
+    }
+
+    public function changePassword() {
+      $db = Database::getConnection();
+      if(isset($_POST['changePassword'])) {
+        $delete_user = htmlspecialchars($_GET['id']);
+
+        $delete = $db->prepare('UPDATE user SET password = ? WHERE id = ?');
+        $delete->execute(array($delete_user));
+
+        $info = "Votre mot de passe a était modifier";
+      }
+      else {
+        $info = "Une erreur est survenue";
+      }
+      if (isset($info)) {
+        echo $info;
+      }
+    }
+
   }
 
 ?>

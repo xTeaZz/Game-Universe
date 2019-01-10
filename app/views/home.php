@@ -43,16 +43,6 @@
       </div>
     <?php } ?>
     </section>
-    <!--Biography-->
-    <section class="sectionmargin container" id="bio">
-      <div class="jumbotron">
-        <h1 class="display-4">Jean Forteroche</h1>
-        <p class="lead">né le 21 juin 1948 à Łódź, est un écrivain polonais, auteur d'histoires fantastiques et de fantasy.</p>
-        <hr class="my-4">
-        <p>Jean Forteroche a étudié l'économie et, avant de se mettre à l'écriture, a travaillé en tant que représentant de ventes senior pour une compagnie d'échanges internationaux. Sa première nouvelle, Le Sorceleur (Wiedźmin), fut publiée en 1986 dans Fantastyka, le magazine de littérature fantastique polonais de référence, et reçut un énorme succès de la part des critiques.</p>
-        <a class="btn btn-primary btn-lg" href="?action=bio" role="button">Lire la suite</a>
-      </div>
-    </section>
     <!--Footer-->
     <?php require'footer.php' ?>
   </body>

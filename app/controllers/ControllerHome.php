@@ -22,8 +22,8 @@ use Models\Commentary;
       require 'app/views/memberspace.php';
     }
 
-    public function bioView() {
-      require 'app/views/bio.php';
+    public function editUser() {
+      require 'app/views/edituser.php';
     }
 
     public function getPost() {
@@ -98,6 +98,18 @@ use Models\Commentary;
       $delete = new User();
       $user = $delete->deleteUser();
       $delete->disconnect();
+    }
+
+    public function changeEmail() {
+      $update = new User();
+      $user = $update->deleteUser();
+      $update->changeEmail();
+    }
+
+    public function changePassword() {
+      $update = new User();
+      $user = $update->deleteUser();
+      $update->changePassword();
     }
 
   }

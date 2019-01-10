@@ -152,7 +152,19 @@
         elseif ($_GET['action'] == 'member') {
             $controller = new ControllerHome();
             $controller->memberspace();
-            }
+        }
+        elseif ($_GET['action'] == 'changeEmail') {
+            $controller = new ControllerHome();
+            $controller->changeEmail();
+        }
+        elseif ($_GET['action'] == 'changePassword') {
+            $controller = new ControllerHome();
+            $controller->changePassword();
+        }
+        elseif ($_GET['action'] == 'edituser') {
+            $controller = new ControllerHome();
+            $controller->editUser();
+        }
         elseif ($_GET['action'] == 'deletecommentary') {
         if (isset($_GET['id']) && $_GET['id'] > 0) {
             $controller = new ControllerAdmin();
