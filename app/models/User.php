@@ -143,21 +143,18 @@ namespace Models;
 
     public function changePassword() {
       $db = Database::getConnection();
-      if(isset($_POST['changePassword'])) {
-        $delete_user = htmlspecialchars($_GET['id']);
-
-        $delete = $db->prepare('UPDATE user SET password = ? WHERE id = ?');
-        $delete->execute(array($delete_user));
+        $pass = password_hash($_POST['newPassword'], PASSWORD_DEFAULT);
+        session_start();
+        $idUser = $_SESSION['id'];
+        $update = $db->prepare('UPDATE user SET password = ? WHERE id = ?');
+        $update->execute(array($delete_user));
 
         $info = "Votre mot de passe a était modifier";
+        
+        if (isset($info)) {
+          echo $info;
+        }
       }
-      else {
-        $info = "Une erreur est survenue";
-      }
-      if (isset($info)) {
-        echo $info;
-      }
-    }
 
   }
 

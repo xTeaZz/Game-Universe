@@ -53,7 +53,6 @@
         }
         elseif ($_GET['action'] == 'reply') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
-                var_dump(($_GET['post']), ($_GET['id']));
                 $controller = new ControllerHome();
                 $controller->createreply();
             }

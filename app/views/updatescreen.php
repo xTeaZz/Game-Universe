@@ -26,7 +26,18 @@
             <img class="card-img-top" src="src/images/test.png" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title"><?= $p['title'] ?></h5>
-            <p class="card-text"><?= $p['message'] = mb_substr($p['message'], 0, strpos($p['message'], ' ', 100));?></p>
+            <p class="card-text">
+          <?php 
+            $str = $p['message'];
+          if (strlen($str) <= 100) {
+            $p['message'] = $str;
+          }
+          else {
+            $p['message'] = mb_substr($p['message'], 0, strpos($p['message'], ' ', 100));
+          }
+          ?>
+            <?= $p['message']?>
+          </p>
             <a class="btn btn-warning" href="?action=updatepost&id=<?= $p['id'] ?>">Modifier l'article</a>
           </div>
         </div>
