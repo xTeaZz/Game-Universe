@@ -107,9 +107,10 @@ namespace Models;
       $db = Database::getConnection();
       if(isset($_GET['id']) AND !empty($_GET['id'])) {
         $delete_user = htmlspecialchars($_GET['id']);
-
-        $delete = $db->prepare('DELETE FROM user WHERE id = ?');
-        $delete->execute(array($delete_user));
+        $usernickname = 'Anonymous';
+        $email = '';
+        $delete = $db->prepare('UPDATE user SET alias = ?, email = ? WHERE id = ?');
+        $delete->execute(array($usernickname, $email, $delete_user));
 
         $info = "Votre Compte a bien était supprimer";
       }

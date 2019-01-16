@@ -124,8 +124,8 @@ namespace Models;
             $commentId = ($_GET['id']);
             $userid= ($_SESSION['id']);
             $id_post = ($_GET['post']);
-            $insert = $db->prepare('INSERT INTO reply(id_user, id_comment, id_post, content) VALUES (?, ?, ?, ?)');
-            $result = $insert->execute(array($userid, $commentId, $id_post, $content));
+            $insert = $db->prepare('INSERT INTO comment(id_user, id_post, id_parent, comment_text, comment_date) VALUES (?, ?, ?, ?, NOW())');
+            $result = $insert->execute(array($userid, $id_post, $commentId,  $content));
 
             $info = "Votre réponse a bien était crée";
           }
