@@ -16,12 +16,9 @@
               Catégories
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="index.php?action=Test">Test</a>
-              <a class="dropdown-item" href="index.php?action=Mmorpg">MMORPG</a>
-              <a class="dropdown-item" href="index.php?action=Shooter">Shooter</a>
-              <a class="dropdown-item" href="index.php?action=Combat">Combat</a>
-              <a class="dropdown-item" href="index.php?action=Stratégie">Stratégie</a>
-              <a class="dropdown-item" href="index.php?action=Course">Course</a>
+            <?php while($c = $category->fetch()) { ?>
+                <a class="dropdown-item" href="index.php?action=<?=$c['category_name']?>"><?=$c['category_name']?></a>
+            <?php } ?>
             </div>
           </div>
         </li>
@@ -83,7 +80,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal" name="button">Annuler</button>
-                <input type="submit" class="btn btn-success" name="buttonLogin"></input>
+                <input type="submit" class="btn btn-success" name="buttonLogin">
               </div>
             </form>
           </div>

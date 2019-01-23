@@ -4,12 +4,15 @@ namespace Controllers;
 use Models\Post;
 use Models\User;
 use Models\Commentary;
+use Models\Category;
 
   class ControllerHome {
 
     public function homeView() {
       $lastposts = new Post();
       $post = $lastposts->getLastPosts();
+      $cat = new Category();
+      $category = $cat->listCategory();
       require 'app/views/home.php';
     }
 
@@ -19,14 +22,20 @@ use Models\Commentary;
     }
 
     public function memberspace() {
+      $cat = new Category();
+      $category = $cat->listCategory();
       require 'app/views/memberspace.php';
     }
 
     public function editUser() {
+      $cat = new Category();
+      $category = $cat->listCategory();
       require 'app/views/edituser.php';
     }
 
     public function getPost() {
+      $cat = new Category();
+      $category = $cat->listCategory();
       require 'app/models/Commentary.php';
       $getpost = new Post();
       $post = $getpost->getPost();
@@ -45,10 +54,12 @@ use Models\Commentary;
     public function listEpisodes() {
       $listpost = new Post();
       $post = $listpost->listPost();
+      $cat = new Category();
+      $category = $cat->listCategory();
       require 'app/views/episodes.php';
     }
 
-    public function listCategorie() {
+    public function listCategory() {
       $listpost = new Post();
       $post = $listpost->listPostBy();
       require 'app/views/episodes.php';

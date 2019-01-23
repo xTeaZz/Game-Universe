@@ -21,6 +21,13 @@
     ?>
     <section class="container paddingtop">
       <h1 class="titlestyle">Modification des informations du compte</h1>
+      <form action="index.php?action=changeAvatar" method="post">
+        <div class="form-group">
+            <label for="newAvatar">Changer d'avatar</label>
+            <input type="file" class="form-control" id="newAvatar" name="newAvatar">
+        </div>
+        <input type="submit" class="btn btn-success" name="changeEmail" value="Modifier">
+    </form>
     <form action="index.php?action=changeEmail" method="post">
         <div class="form-group">
             <label for="newEmail">Nouveau Email</label>

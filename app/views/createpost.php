@@ -41,6 +41,10 @@
             <option>Course</option>
           </select>
         </div>
+        <div class="form-group">
+            <label for="picture">Image</label>
+            <input type="file" class="form-control" id="picture" name="picture">
+        </div>
         <input type="submit" class="btn btn-success" name="submit" value="Envoyer">
       </form>
     </section>

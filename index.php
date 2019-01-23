@@ -4,43 +4,20 @@
 
     use Controllers\ControllerAdmin;
     use Controllers\ControllerHome;
+    use Models\Category;
 
     if (isset($_GET['action'])) {
         if ($_GET['action'] == 'episodes') {
-        $controller = new ControllerHome();
-        $controller->listEpisodes();
+            $controller = new ControllerHome();
+            $controller->listEpisodes();
         }
         elseif ($_GET['action'] == 'login') {
-        $controller = new ControllerHome();
-        $controller->login();
-        }
-        elseif ($_GET['action'] == 'Test') {
-            $controller = new ControllerHome();
-            $controller->listCategorie();
-        }
-        elseif ($_GET['action'] == 'Mmorpg') {
-            $controller = new ControllerHome();
-            $controller->listCategorie();
-        }
-        elseif ($_GET['action'] == 'Shooter') {
-            $controller = new ControllerHome();
-            $controller->listCategorie();
-        }
-        elseif ($_GET['action'] == 'Combat') {
-            $controller = new ControllerHome();
-            $controller->listCategorie();
-        }
-        elseif ($_GET['action'] == 'Stratégie') {
-            $controller = new ControllerHome();
-            $controller->listCategorie();
-        }
-        elseif ($_GET['action'] == 'Course') {
             $controller = new ControllerHome();
             $controller->login();
-        }      
+        }
         elseif ($_GET['action'] == 'signin') {
-        $controller = new ControllerHome();
-        $controller->signuser();
+            $controller = new ControllerHome();
+            $controller->signuser();
         }
         elseif ($_GET['action'] == 'comment') {
         if (isset($_GET['id']) && $_GET['id'] > 0) {
@@ -61,39 +38,51 @@
             }
         }
         elseif ($_GET['action'] == 'createpost') {
-        $controller = new ControllerAdmin();
-        $controller->createPost();
+            $controller = new ControllerAdmin();
+            $controller->createPost();
+        }
+        elseif ($_GET['action'] == 'createCategory') {
+            $controller = new ControllerAdmin();
+            $controller->createCategory();
+        }
+        elseif ($_GET['action'] == 'deleteCategory') {
+            $controller = new ControllerAdmin();
+            $controller->deleteCategory();
+        }
+        elseif ($_GET['action'] == 'deleteCategoryScreen') {
+            $controller = new ControllerAdmin();
+            $controller->listCategory();
         }
         elseif ($_GET['action'] == 'delete') {
-        $controller = new ControllerAdmin();
-        $controller->deleteList();
+            $controller = new ControllerAdmin();
+            $controller->deleteList();
         }
         elseif ($_GET['action'] == 'deletepost') {
         if (isset($_GET['id']) && $_GET['id'] > 0) {
-        $controller = new ControllerAdmin();
-        $controller->deletePost();
+            $controller = new ControllerAdmin();
+            $controller->deletePost();
         }
         else {
             echo 'Erreur Aucune page trouvé';
         }
         }
         elseif ($_GET['action'] == 'update') {
-        $controller = new ControllerAdmin();
-        $controller->updateList();
+            $controller = new ControllerAdmin();
+            $controller->updateList();
         }
         elseif ($_GET['action'] == 'updatepost') {
-        if (isset($_GET['id']) && $_GET['id'] > 0) {
-        $controller = new ControllerAdmin();
-        $controller->updatePost();
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                $controller = new ControllerAdmin();
+                $controller->updatePost();
         }
         else {
             echo 'Erreur Aucune page trouvé';
         }
         }
         elseif ($_GET['action'] == 'report') {
-        if (isset($_GET['id']) && $_GET['id'] > 0) {
-        $controller = new ControllerHome();
-        $controller->reportCommentary();
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                $controller = new ControllerHome();
+                $controller->reportCommentary();
         }
         else {
             echo 'Erreur Aucune page trouvé';
@@ -110,30 +99,30 @@
         }
         }
         elseif ($_GET['action'] == 'bio') {
-        $controller = new ControllerHome();
-        $controller->bioView();
+            $controller = new ControllerHome();
+            $controller->bioView();
         }
         elseif ($_GET['action'] == 'article') {
-        if (isset($_GET['id']) && $_GET['id'] > 0) {
-            $controller = new ControllerHome();
-            $controller->getPost();
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                $controller = new ControllerHome();
+                $controller->getPost();
         }
         else {
             echo 'Erreur Aucune page trouvé';
         }
         }
         elseif ($_GET['action'] == 'logout') {
-        $controller = new ControllerHome();
-        $controller->logout();
+            $controller = new ControllerHome();
+            $controller->logout();
         }
         elseif ($_GET['action'] == 'moderate') {
-        $controller = new ControllerAdmin();
-        $controller->listReported();
+            $controller = new ControllerAdmin();
+            $controller->listReported();
         }
         elseif ($_GET['action'] == 'validatecommentary') {
-        if (isset($_GET['id']) && $_GET['id'] > 0) {
-            $controller = new ControllerAdmin();
-            $controller->validateCommentary();
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                $controller = new ControllerAdmin();
+                $controller->validateCommentary();
         }
         else {
             echo 'Erreur Aucune page trouvé';
@@ -181,7 +170,15 @@
         else {
             echo 'Erreur Aucune page trouvé';
         }
-        }
+        }/*
+        $cat = new Category;
+        $cat->listCategory();
+        while($c = $category->fetch()) {
+            if ($_GET['action'] == $c['category_name']) {
+                $controller = new ControllerHome();
+                $controller->listCategory();
+            }  
+        }*/
     }
     else {
         $controller = new ControllerHome();

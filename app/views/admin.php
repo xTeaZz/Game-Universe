@@ -43,6 +43,20 @@
       </div>
       <div class="card text-center titlestyle">
         <div class="card-body">
+          <h5 class="card-title">Crée une catégorie</h5>
+          <p class="card-text">Rajouter une catégorie</p>
+          <a href="?action=createCategory" class="btn btn-primary">Aller ici</a>
+        </div>
+      </div>
+      <div class="card text-center titlestyle">
+        <div class="card-body">
+          <h5 class="card-title">Supprimer une catégorie</h5>
+          <p class="card-text">Sélectionner une catégorie à supprimer</p>
+          <a href="?action=deleteCategoryScreen" class="btn btn-primary">Aller ici</a>
+        </div>
+      </div>
+      <div class="card text-center titlestyle">
+        <div class="card-body">
           <h5 class="card-title">Voir les commentaires signaler</h5>
           <p class="card-text">Modéré les commentaires</p>
           <a href="?action=moderate" class="btn btn-primary">Aller ici</a>
