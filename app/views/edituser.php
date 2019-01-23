@@ -21,12 +21,12 @@
     ?>
     <section class="container paddingtop">
       <h1 class="titlestyle">Modification des informations du compte</h1>
-      <form action="index.php?action=changeAvatar" method="post">
+      <form action="index.php?action=changeAvatar" method="post" enctype="multipart/form-data">
         <div class="form-group">
-            <label for="newAvatar">Changer d'avatar</label>
-            <input type="file" class="form-control" id="newAvatar" name="newAvatar">
+            <label for="avatar">Changer d'avatar</label>
+            <input type="file" class="form-control" id="avatar" name="avatar">
         </div>
-        <input type="submit" class="btn btn-success" name="changeEmail" value="Modifier">
+        <input type="submit" class="btn btn-success" name="newAvatar" value="Modifier">
     </form>
     <form action="index.php?action=changeEmail" method="post">
         <div class="form-group">

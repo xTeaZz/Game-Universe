@@ -21,6 +21,11 @@ use Models\Category;
       $user = $userclass->sign();
     }
 
+    public function changeAvatar() {
+      $avatar = new User();
+      $user = $avatar->avatarUpload();
+    }
+
     public function memberspace() {
       $cat = new Category();
       $category = $cat->listCategory();

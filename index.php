@@ -145,6 +145,10 @@
             $controller = new ControllerHome();
             $controller->changeEmail();
         }
+        elseif ($_GET['action'] == 'changeAvatar') {
+            $controller = new ControllerHome();
+            $controller->changeAvatar();
+        }
         elseif ($_GET['action'] == 'changePassword') {
             $controller = new ControllerHome();
             $controller->changePassword();

@@ -157,6 +157,28 @@ namespace Models;
         }
       }
 
+      public function avatarUpload() {
+        $db = Database::getConnection();
+        session_start();
+        if(isset($_FILES['avatar'])) {
+          var_dump($_FILES);
+          $temporary = $_FILES['avatar']['tmp_name'];
+          $extension = substr(strrchr ($_FILES['avatar']['name'], "."), 1);
+          $avatarName = $_SESSION['id'].'.'.$extension;
+          $finalName = 'src/upload/'.$avatarName;
+
+          $upload = move_uploaded_file($temporary, $finalName);
+
+          $info = "Votre Avatar a était modifier";
+        }
+        else {
+          $info = "Une erreur est survenue";
+        }
+        if (isset($info)) {
+          echo $info;
+        }
+      }
+
   }
 
 ?>
