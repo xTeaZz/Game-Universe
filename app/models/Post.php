@@ -12,12 +12,12 @@ namespace Models;
       $db = Database::getConnection();
       if(isset($_GET['id']) AND !empty($_GET['id'])){
         $getId = htmlspecialchars($_GET['id']);
-        $post = $db->prepare('SELECT * FROM post WHERE id = ?');
+        $post = $db->prepare('SELECT * FROM post INNER JOIN category ON post.category_id = category.id WHERE post.id = ?');
         $post->execute(array($getId));
         $post = $post->fetch();
         $title = $post['title'];
         $message = $post['message'];
-        $categorie = $post['categorie'];
+        $message = $post['category_name'];
       } else {
         echo "Article Introuvable";
       }
@@ -33,7 +33,7 @@ namespace Models;
           $postTitle = htmlspecialchars($_POST['title']);
           $postMessage = ($_POST['postText']);
           $categorie = $_POST['categories'];
-          $insert = $db->prepare('INSERT INTO post(title, message, categorie, creation_date) VALUES (?, ?, ?, NOW())');
+          $insert = $db->prepare('INSERT INTO post(title, message, category_id, creation_date) VALUES (?, ?, ?, NOW())');
           $insert->execute(array($postTitle, $postMessage, $categorie));
 
           $info = "Votre Article a bien était crée";
@@ -81,9 +81,9 @@ namespace Models;
 
     public function listPostBy() {
       $db = Database::getConnection();
-      $action = htmlspecialchars($_GET['action']);
-      $post = $db->prepare('SELECT * FROM post WHERE categorie = ? ORDER BY id DESC');
-      $post->execute(array($action));
+      $id = htmlspecialchars($_GET['id']);
+      $post = $db->prepare('SELECT * FROM post WHERE category_id = ? ORDER BY id DESC');
+      $post->execute(array($id));
       return $post;
     }
 

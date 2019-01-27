@@ -42,7 +42,7 @@ class Category extends Database {
     }
 
     public function listCategory() {
-        $db = Database::getConnection();
+        $db = Database::getConnection();      
         $category = $db->query('SELECT * FROM category ORDER BY id DESC');
         return $category;
       }

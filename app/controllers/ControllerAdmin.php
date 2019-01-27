@@ -34,6 +34,8 @@ class ControllerAdmin {
   public function createPost() {
     $cat = new Category();
     $category = $cat->listCategory();
+    $cat2 = new Category();
+    $category2 = $cat2->listCategory();
     require'app/views/createpost.php';
     $create = new Post();
     $post = $create->createPost();

@@ -17,7 +17,7 @@
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <?php while($c = $category->fetch()) { ?>
-                <a class="dropdown-item" href="index.php?action=<?=$c['category_name']?>"><?=$c['category_name']?></a>
+                <a class="dropdown-item" href="index.php?action=<?=$c['id']?>"><?=$c['category_name']?></a>
             <?php } ?>
             </div>
           </div>

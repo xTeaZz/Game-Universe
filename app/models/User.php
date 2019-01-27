@@ -161,7 +161,6 @@ namespace Models;
         $db = Database::getConnection();
         session_start();
         if(isset($_FILES['avatar'])) {
-          var_dump($_FILES);
           $temporary = $_FILES['avatar']['tmp_name'];
           $extension = substr(strrchr ($_FILES['avatar']['name'], "."), 1);
           $avatarName = $_SESSION['id'].'.'.$extension;

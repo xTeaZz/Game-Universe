@@ -22,7 +22,7 @@
       <section class="container paddingtop">
         <div>
           <h1><?=$post['title']?></h1>
-          <h2><?=$post['categorie']?></h2>
+          <h2><?=$post['category_name']?></h2>
           <p><?=$post['message']?></p>
         </div>
         <div>

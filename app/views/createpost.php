@@ -33,12 +33,10 @@
         <div class="reply">
           <label for="title">Catégories</label>
           <select class="form-control" name="categories">
-            <option>Test</option>
-            <option>MMORPG</option>
-            <option>Shooter</option>
-            <option>Combat</option>
-            <option>Stratégie</option>
-            <option>Course</option>
+          <?php while($c = $category2->fetch()): ?>
+            <option value = <?=$c['id']?>><?=$c['category_name']?></option>
+          <?php endwhile; ?>
+          
           </select>
         </div>
         <div class="form-group">

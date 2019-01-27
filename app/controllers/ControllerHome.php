@@ -67,6 +67,8 @@ use Models\Category;
     public function listCategory() {
       $listpost = new Post();
       $post = $listpost->listPostBy();
+      $cat = new Category();
+      $category = $cat->listCategory();
       require 'app/views/episodes.php';
     }
 

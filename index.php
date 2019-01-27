@@ -174,15 +174,13 @@
         else {
             echo 'Erreur Aucune page trouvé';
         }
-        }/*
-        $cat = new Category;
-        $cat->listCategory();
-        while($c = $category->fetch()) {
-            if ($_GET['action'] == $c['category_name']) {
-                $controller = new ControllerHome();
-                $controller->listCategory();
-            }  
-        }*/
+        }
+        if ($_GET['action'] == 'category') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+            $controller = new ControllerHome();
+            $controller->listCategory();
+            }
+        }  
     }
     else {
         $controller = new ControllerHome();
