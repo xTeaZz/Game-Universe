@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
   <?php
@@ -20,7 +19,7 @@
         }
       ?>
       <section class="container paddingtop">
-        <?php while($c = $category->fetch()) { ?>
+        <?php while($c = $category1->fetch()) { ?>
         <div class="rows">
           <div class="card marginlist">
           <div class="card-body">

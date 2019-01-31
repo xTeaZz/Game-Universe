@@ -34,7 +34,7 @@
                   Veuillez saisir votre commentaire
                 </div>
                 <div class="modal-body">
-                  <form method="post" action="index.php?action=comment&id=<?= $post['id'] ?>">
+                  <form method="post" action="index.php?action=comment&id=<?= $post['p_id'] ?>">
                     <div class="form-group">
                       <label for="commentArea">Commentaire</label>
                       <textarea class="form-control" id="commentArea" name="comment" rows="3"></textarea>
@@ -54,7 +54,7 @@
           <div class="card">
             <div class="card-header">
               <?= $c['alias'] ?>
-              <img class="avatar" src="src/avatar/<?=$_SESSION['id']?>.jpg" alt="Card image cap">
+              <img class="avatar" src="src/avatar/<?=$c['id_user']?>.jpg" alt="Card image cap">
             </div>
             <div class="card-body">
               <blockquote class="blockquote mb-0">
@@ -68,7 +68,7 @@
                             Veuillez saisir votre réponse
                           </div>
                           <div class="modal-body">
-                            <form method="post" action="index.php?action=reply&id=<?= $c['c_id'] ?>&post=<?= $post['id'] ?>">
+                            <form method="post" action="index.php?action=reply&id=<?= $c['c_id'] ?>&post=<?= $post['p_id'] ?>">
                               <div class="form-group">
                                 <label for="commentArea">Réponse</label>
                                 <textarea class="form-control" id="commentArea" name="comment" rows="3"></textarea>
@@ -82,27 +82,28 @@
                         </div>
                       </div>
                     </div>
-                  <a href="index.php?action=report&id=<?= $c['c_id'] ?>" class="btn btn-danger">Signaler</a>
+                  <a href="index.php?action=report&id=<?= $c['c_id'] ?>&postid=<?= $post['p_id'] ?>" class="btn btn-danger">Signaler</a>
                 </div>
-                <?php while($r = $reply->fetch()) { ?>
-          <div class="card">
-            <div class="card-header">
-              <?= $c['alias'] ?>
-              <img class="avatar" src="src/avatar/<?=$_SESSION['id']?>.jpg" alt="Card image cap">
-            </div>
-            <div class="card-body">
-              <blockquote class="blockquote mb-0">
-                <p><?= $r['content'] ?></p>
-                <a href="index.php?action=report&id=<?= $c['c_id'] ?>" class="btn btn-danger">Signaler</a>
+                <?php while ($r = $reply->fetch()) { ?>
+                  <div class="card">
+                    <div class="card-header">
+                      <?= $r['alias'] ?>
+                      <img class="avatar" src="src/avatar/<?=$r['id_user']?>.jpg" alt="Card image cap">
+                    </div>
+                    <div class="card-body">
+                      <blockquote class="blockquote mb-0">
+                        <p><?= $r['comment_text'] ?></p>
+                        <a href="index.php?action=report&id=<?= $c['c_id'] ?>&postid=<?= $post['p_id'] ?>" class="btn btn-danger">Signaler</a>
+                      </blockquote>
+                    </div>
+                  </div>
+                  <?php } ?>  
+                </div> 
               </blockquote>
             </div>
+            <?php } ?>
+            
           </div>
-          <?php } ?>
-                </div>
-              </blockquote>
-            </div>
-          </div>
-          <?php } ?>
       </section>
       <?php require'footer.php' ?>
     </body>

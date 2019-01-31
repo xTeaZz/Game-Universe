@@ -9,91 +9,159 @@ use Models\Category;
 class ControllerAdmin {
 
   public function adminView() {
-    $cat = new Category();
-    $category = $cat->listCategory();
-    require'app/views/admin.php';
+    try {
+      $cat = new Category();
+      $category = $cat->listCategory();
+      require'app/views/admin.php';
+    }
+    catch (\Exception $e) {
+      echo $e->getMessage();
+    }
   }
 
   public function updatePost() {
-    $cat = new Category();
-    $category = $cat->listCategory();
-    $update = new Post();
-    $post = $update->getPost();
-    require'app/views/updatepost.php';
-    $post = $update->updatePost();
+    try {
+      $cat = new Category();
+      $category = $cat->listCategory();
+      $update = new Post();
+      $post = $update->getPost();
+      require'app/views/updatepost.php';
+      $post = $update->updatePost();
+    }
+    catch (\Exception $e) {
+      echo $e->getMessage();
+    }
   }
 
   public function updateList() {
-    $cat = new Category();
-    $category = $cat->listCategory();
-    $updatelist = new Post();
-    $post = $updatelist->listPost();
-    require'app/views/updatescreen.php';
+    try {
+      $cat = new Category();
+      $category = $cat->listCategory();
+      $updatelist = new Post();
+      $post = $updatelist->listPost();
+      require'app/views/updatescreen.php';
+    }
+    catch (\Exception $e) {
+      echo $e->getMessage();
+    }
   }
 
   public function createPost() {
-    $cat = new Category();
-    $category = $cat->listCategory();
-    $cat2 = new Category();
-    $category2 = $cat2->listCategory();
-    require'app/views/createpost.php';
-    $create = new Post();
-    $post = $create->createPost();
-    $pic = new Post();
-    $pic->imageUpload();
+    try {
+      //$pic = new Post();
+      //$picture = $pic->imageUpload();
+      $create = new Post();
+      $post = $create->createPost();
+    }
+    catch (\Exception $e) {
+      echo $e->getMessage();
+    }
+  }
+
+  public function createScreen() {
+    try {
+      $cat = new Category();
+      $category = $cat->listCategory();
+      $cat2 = new Category();
+      $category2 = $cat2->listCategory();
+      require'app/views/createpost.php';
+    }
+    catch (\Exception $e) {
+      echo $e->getMessage();
+    }
   }
 
   public function deleteCategoryScreen() {
-    $cat = new Category();
-    $category = $cat->listCategory();
-    $delete = new Category();
-    $category = $delete->listCategory();
-    require'app/views/deletecategory.php';
+    try {
+      $cat = new Category();
+      $category = $cat->listCategory();
+      $delete = new Category();
+      $category1 = $delete->listCategory();
+      require'app/views/deletecategory.php';
+    }
+    catch (\Exception $e) {
+      echo $e->getMessage();
+    }
   }
 
   public function deleteCategory() {
-    $delete = new Category();
-    $category = $delete->deleteCategory();
+    try {
+      $delete = new Category();
+      $category = $delete->deleteCategory();
+    }
+    catch (\Exception $e) {
+      echo $e->getMessage();
+    }
   }
 
   public function createCategory() {
-    $cat = new Category();
-    $category = $cat->listCategory();
-    require'app/views/createcategory.php';
-    $update = new Category();
-    $post = $update->createCategory();
+    try {
+      $cat = new Category();
+      $category = $cat->listCategory();
+      require'app/views/createcategory.php';
+      $update = new Category();
+      $post = $update->createCategory();
+    }
+    catch (\Exception $e) {
+      echo $e->getMessage();
+    }
     
   }
 
   public function deleteList() {
-    $cat = new Category();
-    $category = $cat->listCategory();
-    $deletelist = new Post();
-    $post = $deletelist->listPost();
-    require'app/views/deletescreen.php';
+    try {
+      $cat = new Category();
+      $category = $cat->listCategory();
+      $deletelist = new Post();
+      $post = $deletelist->listPost();
+      require'app/views/deletescreen.php';
+    }
+    catch (\Exception $e) {
+      echo $e->getMessage();
+    }
   }
 
   public function deletePost() {
-    $deletepost = new Post();
-    $post = $deletepost->deletePost();
+    try {
+      $deletepost = new Post();
+      $post = $deletepost->deletePost();
+    }
+    catch (\Exception $e) {
+      echo $e->getMessage();
+    }
   }
 
   public function deleteCommentary() {
-    $deletecommentary = new Commentary();
-    $commentary = $deletecommentary->deleteCommentary();
+    try {
+      $deletecommentary = new Commentary();
+      $commentary = $deletecommentary->deleteCommentary();
+    }
+    catch (\Exception $e) {
+      echo $e->getMessage();
+    }
   }
 
   public function validateCommentary() {
-    $validatecommentary = new Commentary();
-    $commentary = $validatecommentary->validateCommentary();
+    try {
+      $validatecommentary = new Commentary();
+      $commentary = $validatecommentary->validateCommentary();
+    }
+    catch (\Exception $e) {
+      echo $e->getMessage();
+    }
   }
 
   public function listReported() {
-    $cat = new Category();
-    $category = $cat->listCategory();
-    $listcomment = new Commentary();
-    $commentary = $listcomment->listReportedCommentary();
-    require'app/views/reportedlist.php';
+    try {
+      $cat = new Category();
+      $category = $cat->listCategory();
+      $listcomment = new Commentary();
+      $commentary = $listcomment->listReportedCommentary();
+      require'app/views/reportedlist.php';
+    }
+    catch (\Exception $e) {
+      echo $e->getMessage();
+    }
   }
 
 }

@@ -12,14 +12,11 @@ namespace Models;
       $db = Database::getConnection();
       if(isset($_GET['id']) AND !empty($_GET['id'])){
         $getId = htmlspecialchars($_GET['id']);
-        $post = $db->prepare('SELECT * FROM post INNER JOIN category ON post.category_id = category.id WHERE post.id = ?');
+        $post = $db->prepare('SELECT *, post.id AS p_id FROM post INNER JOIN category ON post.category_id = category.id WHERE post.id = ?');
         $post->execute(array($getId));
         $post = $post->fetch();
-        $title = $post['title'];
-        $message = $post['message'];
-        $message = $post['category_name'];
       } else {
-        echo "Article Introuvable";
+        throw new \Exception('Article introuvable');
       }
       return $post;
     }
@@ -35,14 +32,29 @@ namespace Models;
           $categorie = $_POST['categories'];
           $insert = $db->prepare('INSERT INTO post(title, message, category_id, creation_date) VALUES (?, ?, ?, NOW())');
           $insert->execute(array($postTitle, $postMessage, $categorie));
-  
-          $info = "Votre Article a bien était crée";
+          header('Location: index.php');
         } else {
-          $info = "Veuillez remplir tous les champs";
+          throw new \Exception('Veuillez remplir tout les champs');
         }
       }
-      if (isset($info)) {
-        echo $info;
+      if(isset($_FILES['picture'])) {
+        var_dump($_FILES['picture']);
+        if($_FILES['picture']['size'] <= 2000000 || $_FILES['picture']['size'] == 0) {
+          $temporary = $_FILES['picture']['tmp_name'];
+          $extension = substr(strrchr ($_FILES['picture']['name'], "."), 1);
+          if($extension == "jpg" || $extension == "png" || $extension == "PNG" || $extension == "JPEG") {
+            $pictureName = $_SESSION['id'].'.'.'jpg';
+            $finalName = 'src/post/'.$pictureName;
+            $upload = move_uploaded_file($temporary, $finalName);
+          } else {
+            throw new \Exception('Le type de fichier est incorrect');
+          }
+        } else {
+          throw new \Exception("La taille de l'image ne doit pas dépasser 2Mb");
+        } 
+      }
+      else {
+        throw new \Exception('Une erreur est survenue');
       }
     }
 
@@ -59,15 +71,11 @@ namespace Models;
           $categorie = $_POST['categories'];
           $update = $db->prepare('UPDATE post SET title = ?, message = ?, categorie = ? WHERE id = ?');
           $update->execute(array($post_title, $post_message, $categorie, $update_post));
-          $info = "Votre Article a bien était modifier";
+          header('Location: index.php?action=article&id='.$update_post);
           }
         } else {
-          $info = "Veuillez remplir tous les champs";
+          throw new \Exception('Veuilez remplir tout les champs');
         }
-      }
-      if (isset($info)) {
-        echo $info;
-
       }
     }
 
@@ -101,20 +109,14 @@ namespace Models;
       $db = Database::getConnection();
       if(isset($_GET['id']) AND !empty($_GET['id'])) {
         $delete_post = htmlspecialchars($_GET['id']);
-
         $delete = $db->prepare('DELETE FROM post WHERE id = ?');
         $delete->execute(array($delete_post));
-
         $delete_comment = $db->prepare('DELETE FROM comment WHERE id_post = ?');
         $delete_comment->execute(array($delete_post));
-
-        $info = "Votre Article a bien était supprimer";
+        header('Location: index.php?action=delete');
       }
       else {
-        $info = "Une erreur est survenue";
-      }
-      if (isset($info)) {
-        echo $info;
+        throw new \Exception('Une erreur est survenue');
       }
     }
 
@@ -129,20 +131,15 @@ namespace Models;
             $pictureName = $_SESSION['id'].'.'.'jpg';
             $finalName = 'src/post/'.$pictureName;
             $upload = move_uploaded_file($temporary, $finalName);
-
-            $info = "Votre image a était télécharger";
           } else {
-            $info = "Le type de fichier est incorrect";
+            throw new \Exception('Le type de fichier est incorrect');
           }
         } else {
-          $info = "La taille de l'image est trop grande";
+          throw new \Exception("La taille de l'image ne doit pas dépasser 2Mb");
         } 
       }
       else {
-        $info = "Une erreur est survenue";
-      }
-      if (isset($info)) {
-        echo $info;
+        throw new \Exception('Une erreur est survenue');
       }
     }
 

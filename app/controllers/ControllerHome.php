@@ -9,125 +9,225 @@ use Models\Category;
   class ControllerHome {
 
     public function homeView() {
-      $lastposts = new Post();
-      $post = $lastposts->getLastPosts();
-      $cat = new Category();
-      $category = $cat->listCategory();
-      require 'app/views/home.php';
+      try {
+        $lastposts = new Post();
+        $post = $lastposts->getLastPosts();
+        $cat = new Category();
+        $category = $cat->listCategory();
+        require 'app/views/home.php';
+      }
+      catch (\Exception $e) {
+        echo $e->getMessage();
+      }
     }
 
     public function signuser() {
-      $userclass = new User();
-      $user = $userclass->sign();
+      try {
+        $userclass = new User();
+        $user = $userclass->sign();
+      }
+      catch (\Exception $e) {
+        echo $e->getMessage();
+      }
     }
 
     public function changeAvatar() {
-      $avatar = new User();
-      $user = $avatar->avatarUpload();
+      try {
+        $avatar = new User();
+        $user = $avatar->avatarUpload();
+      }
+      catch (\Exception $e) {
+        echo $e->getMessage();
+      }
     }
 
     public function memberspace() {
-      $cat = new Category();
-      $category = $cat->listCategory();
-      require 'app/views/memberspace.php';
+      try {
+        $cat = new Category();
+        $category = $cat->listCategory();
+        require 'app/views/memberspace.php';
+      }
+      catch (\Exception $e) {
+        echo $e->getMessage();
+      }
     }
 
     public function editUser() {
-      $cat = new Category();
-      $category = $cat->listCategory();
-      require 'app/views/edituser.php';
+      try {
+        $cat = new Category();
+        $category = $cat->listCategory();
+        require 'app/views/edituser.php';
+      }
+      catch (\Exception $e) {
+        echo $e->getMessage();
+      }
     }
 
     public function getPost() {
-      $cat = new Category();
-      $category = $cat->listCategory();
-      require 'app/models/Commentary.php';
-      $getpost = new Post();
-      $post = $getpost->getPost();
-      $getcomment = new Commentary();
-      $commentary = $getcomment->listCommentary();
-      $reply = $getcomment->listReply();
-      require 'app/views/article.php';
+      try {
+        $cat = new Category();
+        $category = $cat->listCategory();
+        $getpost = new Post();
+        $post = $getpost->getPost();
+        $getcomment = new Commentary();
+        $commentary = $getcomment->listCommentary();
+        $getcomment1 = new Commentary();
+        $reply = $getcomment1->listReply();
+        require 'app/views/article.php';
+      }
+      catch (\Exception $e) {
+        echo $e->getMessage();
+      }
     }
 
     public function getLastPosts() {
-      $lastposts = new Post();
-      $post = $lastposts->listPost();
-      require 'app/views/episodes.php';
+      try {
+        $lastposts = new Post();
+        $post = $lastposts->listPost();
+        require 'app/views/episodes.php';
+      }
+      catch (\Exception $e) {
+        echo $e->getMessage();
+      }
     }
 
     public function listEpisodes() {
-      $listpost = new Post();
-      $post = $listpost->listPost();
-      $cat = new Category();
-      $category = $cat->listCategory();
-      require 'app/views/episodes.php';
+      try {
+        $listpost = new Post();
+        $post = $listpost->listPost();
+        $cat = new Category();
+        $category = $cat->listCategory();
+        require 'app/views/episodes.php';
+      }
+      catch (\Exception $e) {
+        echo $e->getMessage();
+      }
     }
 
     public function listCategory() {
-      $listpost = new Post();
-      $post = $listpost->listPostBy();
-      $cat = new Category();
-      $category = $cat->listCategory();
-      require 'app/views/episodes.php';
+      try {
+        $listpost = new Post();
+        $post = $listpost->listPostBy();
+        $cat = new Category();
+        $category = $cat->listCategory();
+        require 'app/views/episodes.php';
+      }
+      catch (\Exception $e) {
+        echo $e->getMessage();
+      }
     }
 
     public function sign() {
-      $listpost = new Post();
-      $post = $listpost->listPost();
-      require 'app/views/episodes.php';
+      try {
+        $listpost = new Post();
+        $post = $listpost->listPost();
+        require 'app/views/episodes.php';
+      }
+      catch (\Exception $e) {
+        echo $e->getMessage();
+      }
     }
 
     public function login() {
-      $login = new User();
-      $login->loginUser();
+      try {
+        $login = new User();
+        $login->loginUser();
+      }
+      catch (\Exception $e) {
+        echo $e->getMessage();
+      }
     }
 
     public function logout() {
-      $logout = new User();
-      $logout->disconnect();
+      try {
+        $logout = new User();
+        $logout->disconnect();
+      }
+      catch (\Exception $e) {
+        echo $e->getMessage();
+      }
     }
 
     public function logedUser() {
-      $login = new User();
+      try {
+        $login = new User();
+      }
+      catch (\Exception $e) {
+        echo $e->getMessage();
+      }
     }
 
     public function getComment() {
-      $listcomment = new Commentary();
-      $commentary = $listcomment->listCommentary();
+      try {
+        $listcomment = new Commentary();
+        $commentary = $listcomment->listCommentary();
+      }
+      catch (\Exception $e) {
+        echo $e->getMessage();
+      }
     }
 
     public function createcomment() {
-      $commentary = new Commentary();
-      $comment = $commentary->createCommentary();
+      try {
+        $commentary = new Commentary();
+        $comment = $commentary->createCommentary();
+      }
+      catch (\Exception $e) {
+        echo $e->getMessage();
+      }
     }
 
     public function createreply() {
-      $reply = new Commentary();
-      $commentReply = $reply->createReply();
+      try {
+        $reply = new Commentary();
+        $commentReply = $reply->createReply();
+      }
+      catch (\Exception $e) {
+        echo $e->getMessage();
+      }
     }
 
     public function reportCommentary() {
-      $report = new Commentary();
-      $comment = $report->reportCommentary();
+      try {
+        $report = new Commentary();
+        $comment = $report->reportCommentary();
+      }
+      catch (\Exception $e) {
+        echo $e->getMessage();
+      }
     }
 
     public function deleteUser() {
-      $delete = new User();
-      $user = $delete->deleteUser();
-      $delete->disconnect();
+      try {
+        $delete = new User();
+        $user = $delete->deleteUser();
+        $delete->disconnect();
+      }
+      catch (\Exception $e) {
+        echo $e->getMessage();
+      }
     }
 
     public function changeEmail() {
-      $update = new User();
-      $user = $update->deleteUser();
-      $update->changeEmail();
+      try {
+        $update = new User();
+        $user = $update->deleteUser();
+        $update->changeEmail();
+      }
+      catch (\Exception $e) {
+        echo $e->getMessage();
+      }
     }
 
     public function changePassword() {
-      $update = new User();
-      $user = $update->deleteUser();
-      $update->changePassword();
+      try {
+        $update = new User();
+        $user = $update->deleteUser();
+        $update->changePassword();
+      }
+      catch (\Exception $e) {
+        echo $e->getMessage();
+      }
     }
 
   }

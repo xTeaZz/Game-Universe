@@ -38,19 +38,15 @@ namespace Models;
             $userid= ($_SESSION['id']);
             $insert = $db->prepare('INSERT INTO comment(id_user, id_post, comment_text, comment_date) VALUES (?, ?, ?, NOW())');
             $result = $insert->execute(array($userid, $postId, $postCommentary));
-
-            $info = "Votre commentaire a bien était crée";
+            header('Location: index.php?action=article&id='.$postId);
           }
           else {
-          $info = "Veuillez remplir tous les champs";
+            throw new \Exception('Veuillez remplir tout les champs');
+          }
         }
       }
-    }
-    else {
-      $info ="Vous devez être connecter pour réaliser cette action";
-    }
-      if (isset($info)) {
-        echo $info;
+      else {
+        throw new \Exception('Vous devez être connecter pour réaliser cette action');
       }
     }
 
@@ -60,17 +56,12 @@ namespace Models;
       $db = Database::getConnection();
       if(isset($_GET['id']) AND !empty($_GET['id'])) {
         $deleteComment = htmlspecialchars($_GET['id']);
-
         $delete = $db->prepare('DELETE FROM comment WHERE id = ?');
         $delete->execute(array($deleteComment));
-
-        $info = "Votre commentaire a bien était supprimer";
+        header('Location: index.php?action=moderate');
       }
       else {
-        $info = "Une erreur est survenue";
-      }
-      if (isset($info)) {
-        echo $info;
+        throw new \Exception('Une erreur est survenue');
       }
     }
 
@@ -80,17 +71,12 @@ namespace Models;
       $db = Database::getConnection();
       if(isset($_GET['id']) AND !empty($_GET['id'])) {
         $reportId = htmlspecialchars($_GET['id']);
-
         $report = $db->prepare('UPDATE comment SET report = 0 WHERE id = ?');
         $report->execute(array($reportId));
-
-        $info = "Votre commentaire a bien était valider";
+        header('Location: index.php?action=moderate');
       }
       else {
-        $info = "Une erreur est survenue";
-      }
-      if (isset($info)) {
-        echo $info;
+        throw new \Exception('Une erreur est survenue');
       }
     }
 
@@ -99,18 +85,14 @@ namespace Models;
     public function reportCommentary() {
       $db = Database::getConnection();
       if(isset($_GET['id']) AND !empty($_GET['id'])) {
+        $postId = htmlspecialchars($_GET['postid']);
         $reportId = htmlspecialchars($_GET['id']);
-
         $report = $db->prepare('UPDATE comment SET report = 1 WHERE id = ?');
         $report->execute(array($reportId));
-
-        $info = "Votre commentaire a bien était signaler";
+        header('Location: index.php?action=article&id='.$postId);
       }
       else {
-        $info = "Une erreur est survenue";
-      }
-      if (isset($info)) {
-        echo $info;
+        throw new \Exception('Une erreur est survenue');
       }
     }
 
@@ -126,27 +108,23 @@ namespace Models;
             $id_post = ($_GET['post']);
             $insert = $db->prepare('INSERT INTO comment(id_user, id_post, id_parent, comment_text, comment_date) VALUES (?, ?, ?, ?, NOW())');
             $result = $insert->execute(array($userid, $id_post, $commentId,  $content));
-
-            $info = "Votre réponse a bien était crée";
+            header('Location: index.php?action=article&id='.$id_post);
           }
           else {
-          $info = "Veuillez remplir tous les champs";
+            throw new \Exception('Veuillez remplir tout les champs');
+          }
         }
       }
-    }
-    else {
-      $info ="Vous devez être connecter pour réaliser cette action";
-    }
-      if (isset($info)) {
-        echo $info;
+      else {
+        throw new \Exception("Vous devez être connecter pour réaliser cette action");
       }
     }
 
     public function listReply() {
       $db = Database::getConnection();
-      $postId = htmlspecialchars($_GET['id']);
-      $reply = $db->prepare('SELECT user.alias,reply.content, reply.id_comment, reply.id  FROM reply INNER JOIN user ON reply.id_user = user.id WHERE id_post = ? ORDER BY reply.id DESC');
-      $reply->execute(array($postId));
+      $parentId = htmlspecialchars($_GET['id']);
+      $reply = $db->prepare('SELECT * FROM comment INNER JOIN user ON id_user = user.id WHERE id_parent = 36 ORDER BY comment.id DESC');
+      $reply->execute(array($parentId));
       return $reply;
     }
 

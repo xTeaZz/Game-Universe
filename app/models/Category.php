@@ -10,16 +10,12 @@ class Category extends Database {
             if(!empty($_POST['title'])){
               $postTitle = htmlspecialchars($_POST['title']);
               $insert = $db->prepare('INSERT INTO category(category_name) VALUES (?)');
-              $insert->execute(array($postTitle));
-    
-              $info = "Votre catégorie a bien était crée";
+              $insert->execute(array($postTitle));  
+              header('Location: index.php?action=admin');
             }
             else {
-              $info = "Veuillez remplir tous les champs";
+                throw new \Exception('Veuillez remplir tout les champs');
             }
-        }
-        if (isset($info)) {
-            echo $info;
         }
     }
 
@@ -27,18 +23,13 @@ class Category extends Database {
         $db = Database::getConnection();
         if(isset($_GET['id']) AND !empty($_GET['id'])) {
             $delete_category = htmlspecialchars($_GET['id']);
-    
             $delete = $db->prepare('DELETE FROM category WHERE id = ?');
             $delete->execute(array($delete_category));
-
-            $info = "Votre catégorie a bien était supprimer";
-    }
-    else {
-        $info = "Une erreur est survenue";
-      }
-      if (isset($info)) {
-        echo $info;
-      }
+            header('Location: index.php?action=admin');
+        }
+        else {
+            throw new \Exception('Une erreur est survenue');
+        }
     }
 
     public function listCategory() {
