@@ -94,3 +94,9 @@
 .reply {
   margin-bottom: 0.5em!important;
 }
+
+.avatar {
+  height: 3em;
+  width: 3em;
+  margin-left: 0.5em;
+}

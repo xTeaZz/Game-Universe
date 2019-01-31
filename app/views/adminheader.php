@@ -25,17 +25,18 @@
       </ul>
     </div>
       <p class="textcolor pheader">Bonjour <?=$_SESSION['alias']?></p>
+      <img class="avatar" src="src/avatar/<?=$_SESSION['id']?>.jpg" alt="Avatar">
     <!--Espace Membre-->
       <form method="post" action="index.php?action=member">
-        <input type="submit" class="btn btn-outline-info marginheader" name="buttonMember" value="Espace membre"></input>
+        <input type="submit" class="btn btn-outline-info marginheader" name="buttonMember" value="Espace membre">
       </form>
     <!--Centre d'administration-->
       <form method="post" action="index.php?action=admin">
-        <input type="submit" class="btn btn-outline-primary marginheader" name="buttonAdmin" value="Centre d'administration"></input>
+        <input type="submit" class="btn btn-outline-primary marginheader" name="buttonAdmin" value="Centre d'administration">
       </form>
     <!--Deconnection-->
       <form method="post" action="index.php?action=logout">
-        <input type="submit" class="btn btn-outline-danger marginheader" name="buttonLogout" value="Déconnexion"></input>
+        <input type="submit" class="btn btn-outline-danger marginheader" name="buttonLogout" value="Déconnexion">
       </form>
   </nav>
 </header>

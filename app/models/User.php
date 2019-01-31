@@ -161,14 +161,21 @@ namespace Models;
         $db = Database::getConnection();
         session_start();
         if(isset($_FILES['avatar'])) {
-          $temporary = $_FILES['avatar']['tmp_name'];
-          $extension = substr(strrchr ($_FILES['avatar']['name'], "."), 1);
-          $avatarName = $_SESSION['id'].'.'.$extension;
-          $finalName = 'src/upload/'.$avatarName;
-
-          $upload = move_uploaded_file($temporary, $finalName);
-
-          $info = "Votre Avatar a était modifier";
+          if($_FILES['avatar']['size'] > 2000000 || $_FILES['avatar']['size'] == 0) {
+            $temporary = $_FILES['avatar']['tmp_name'];
+            $extension = substr(strrchr ($_FILES['avatar']['name'], "."), 1);
+            if($extension == "jpg" || $extension == "png" || $extension == "PNG" || $extension == "JPEG") {
+              $avatarName = $_SESSION['id'].'.'.'jpg';
+              $finalName = 'src/avatar/'.$avatarName;
+              $upload = move_uploaded_file($temporary, $finalName);
+  
+              $info = "Votre Avatar a était modifier";
+            } else {
+              $info = "Le type de fichier est incorrect";
+            }
+          } else {
+            $info = "La taille de l'image est trop grande";
+          } 
         }
         else {
           $info = "Une erreur est survenue";

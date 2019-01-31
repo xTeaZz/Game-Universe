@@ -54,6 +54,7 @@
           <div class="card">
             <div class="card-header">
               <?= $c['alias'] ?>
+              <img class="avatar" src="src/avatar/<?=$_SESSION['id']?>.jpg" alt="Card image cap">
             </div>
             <div class="card-body">
               <blockquote class="blockquote mb-0">
@@ -87,6 +88,7 @@
           <div class="card">
             <div class="card-header">
               <?= $c['alias'] ?>
+              <img class="avatar" src="src/avatar/<?=$_SESSION['id']?>.jpg" alt="Card image cap">
             </div>
             <div class="card-body">
               <blockquote class="blockquote mb-0">

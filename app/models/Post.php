@@ -35,7 +35,7 @@ namespace Models;
           $categorie = $_POST['categories'];
           $insert = $db->prepare('INSERT INTO post(title, message, category_id, creation_date) VALUES (?, ?, ?, NOW())');
           $insert->execute(array($postTitle, $postMessage, $categorie));
-
+  
           $info = "Votre Article a bien était crée";
         } else {
           $info = "Veuillez remplir tous les champs";
@@ -117,6 +117,35 @@ namespace Models;
         echo $info;
       }
     }
+
+    public function imageUpload() {
+      $db = Database::getConnection();
+      if(isset($_FILES['picture'])) {
+        var_dump($_FILES['picture']);
+        if($_FILES['picture']['size'] <= 2000000 || $_FILES['picture']['size'] == 0) {
+          $temporary = $_FILES['picture']['tmp_name'];
+          $extension = substr(strrchr ($_FILES['picture']['name'], "."), 1);
+          if($extension == "jpg" || $extension == "png" || $extension == "PNG" || $extension == "JPEG") {
+            $pictureName = $_SESSION['id'].'.'.'jpg';
+            $finalName = 'src/post/'.$pictureName;
+            $upload = move_uploaded_file($temporary, $finalName);
+
+            $info = "Votre image a était télécharger";
+          } else {
+            $info = "Le type de fichier est incorrect";
+          }
+        } else {
+          $info = "La taille de l'image est trop grande";
+        } 
+      }
+      else {
+        $info = "Une erreur est survenue";
+      }
+      if (isset($info)) {
+        echo $info;
+      }
+    }
+
   }
 
 ?>

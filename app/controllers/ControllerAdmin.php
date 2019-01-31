@@ -39,6 +39,8 @@ class ControllerAdmin {
     require'app/views/createpost.php';
     $create = new Post();
     $post = $create->createPost();
+    $pic = new Post();
+    $pic->imageUpload();
   }
 
   public function deleteCategoryScreen() {
