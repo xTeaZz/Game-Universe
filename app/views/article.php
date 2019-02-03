@@ -54,7 +54,15 @@
           <div class="card">
             <div class="card-header">
               <?= $c['alias'] ?>
-              <img class="avatar" src="src/avatar/<?=$c['id_user']?>.jpg" alt="Card image cap">
+              <?php
+                $filename = 'src/avatar/'.$c['id_user'].'.jpg';
+                if (file_exists($filename)) {
+                    $filename = $c['id_user'];
+                } else {
+                  $filename = "anonymous";
+                }
+              ?>
+              <img class="avatar" src="src/avatar/<?=$filename?>.jpg" alt="Card image cap">
             </div>
             <div class="card-body">
               <blockquote class="blockquote mb-0">
@@ -88,7 +96,15 @@
                   <div class="card">
                     <div class="card-header">
                       <?= $r['alias'] ?>
-                      <img class="avatar" src="src/avatar/<?=$r['id_user']?>.jpg" alt="Card image cap">
+                      <?php
+                        $filename = 'src/avatar/'.$c['id_user'].'.jpg';
+                        if (file_exists($filename)) {
+                            $filename = $c['id_user'];
+                        } else {
+                          $filename = "anonymous";
+                        }
+                      ?>
+                      <img class="avatar" src="src/avatar/<?=$filename?>.jpg" alt="Card image cap">
                     </div>
                     <div class="card-body">
                       <blockquote class="blockquote mb-0">

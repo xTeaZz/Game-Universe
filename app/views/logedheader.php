@@ -27,7 +27,15 @@
       </ul>
     </div>
       <p class="textcolor pheader">Bonjour <?=$_SESSION['alias']?></p>
-      <img class="avatar" src="src/avatar/<?=$_SESSION['id']?>.jpg" alt="Avatar">
+      <?php
+        $filename = 'src/avatar/'.$_SESSION['id'].'.jpg';
+        if (file_exists($filename)) {
+          $filename = $_SESSION['id'];
+        } else {
+          $filename = "anonymous";
+        }
+      ?>
+      <img class="avatar" src="src/avatar/<?=$filename?>.jpg" alt="Card image cap">
       <!--Espace Membre-->
       <form method="post" action="index.php?action=member">
         <input type="submit" class="btn btn-outline-info marginheader" name="buttonMember" value="Espace membre"></input>

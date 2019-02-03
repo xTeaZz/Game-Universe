@@ -123,7 +123,7 @@ namespace Models;
     public function listReply() {
       $db = Database::getConnection();
       $parentId = htmlspecialchars($_GET['id']);
-      $reply = $db->prepare('SELECT * FROM comment INNER JOIN user ON id_user = user.id WHERE id_parent = 36 ORDER BY comment.id DESC');
+      $reply = $db->prepare('SELECT * FROM comment INNER JOIN user ON id_user = user.id WHERE id_parent = ? ORDER BY comment.id DESC');
       $reply->execute(array($parentId));
       return $reply;
     }
