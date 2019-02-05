@@ -13,9 +13,20 @@ namespace Models;
       $postId = htmlspecialchars($_GET['id']);
       $commentary = $db->prepare('SELECT *, comment.id AS c_id FROM comment INNER JOIN user ON comment.id_user = user.id WHERE id_post = ? AND id_parent = 0 ORDER BY comment.id ASC');
       $commentary->execute(array($postId));
-      return $commentary;
-
-
+      $result = [];
+      $i = 0;
+      while ($comment = $commentary->fetch()){
+        $result[$i] = $comment;
+        $commentId = $comment['c_id'];
+        $query = $db->prepare('SELECT *, comment.id AS c_id FROM comment INNER JOIN user ON id_user = user.id WHERE id_parent = ? ORDER BY comment.id ASC');
+        $query->execute(array($commentId));
+        $i++;
+        while ($fils = $query->fetch()){
+          $result[$i] = $fils;
+          $i++;
+        }
+      }
+      return $result;
     }
 
 /*Permet de lister les commentaires signaler*/

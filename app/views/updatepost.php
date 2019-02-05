@@ -20,7 +20,7 @@
     ?>
     <section class="container paddingtop">
       <h1 class="titlestyle">Modification d'article</h1>
-      <form action="" method="post">
+      <form action="index.php?action=updatepostscreen&id=<?=$post['p_id']?>" method="post">
         <div class="form-group">
           <label for="title">Titre</label>
           <input type="text" class="form-control" name="title" value="<?= $post['title']?>">

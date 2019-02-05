@@ -21,6 +21,16 @@ class ControllerAdmin {
 
   public function updatePost() {
     try {
+      $update2 = new Post();
+      $post = $update2->updatePost();   
+    }
+    catch (\Exception $e) {
+      echo $e->getMessage();
+    }
+  }
+
+  public function updatePostScreen() {
+    try {
       $cat = new Category();
       $category = $cat->listCategory();
       $cat2 = new Category();
@@ -28,9 +38,6 @@ class ControllerAdmin {
       $update = new Post();
       $post = $update->getPost();
       require'app/views/updatepost.php';
-      $update2 = new Post();
-      $post = $update2->updatePost();
-      
     }
     catch (\Exception $e) {
       echo $e->getMessage();

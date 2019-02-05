@@ -71,8 +71,6 @@ use Models\Category;
         $post = $getpost->getPost();
         $getcomment = new Commentary();
         $commentary = $getcomment->listCommentary();
-        $getreply = new Commentary();
-        $reply = $getreply->listReply();
         require 'app/views/article.php';
       }
       catch (\Exception $e) {

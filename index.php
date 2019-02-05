@@ -19,6 +19,15 @@
                 $controller = new ControllerHome();
                 $controller->signuser();
             }
+            elseif ($_GET['action'] == 'updatepostscreen') {
+                if (isset($_GET['id']) && $_GET['id'] > 0) {
+                $controller = new ControllerAdmin();
+                $controller->updatePost();
+            }
+            else {
+                throw new \Exception('Auncune page trouvée');
+            }
+            }
             elseif ($_GET['action'] == 'comment') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 $controller = new ControllerHome();
@@ -142,7 +151,7 @@
                     if ($_SESSION['admin'] == 1) {
                 if (isset($_GET['id']) && $_GET['id'] > 0) {
                     $controller = new ControllerAdmin();
-                    $controller->updatePost();
+                    $controller->updatePostScreen();
             }
             else {
                 throw new \Exception("Vous n'êtes pas administrateur");

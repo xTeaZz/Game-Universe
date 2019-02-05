@@ -52,8 +52,7 @@ namespace Models;
           $categorie = $_POST['categories'];
           $update = $db->prepare('UPDATE post SET title = ?, message = ?, category_id = ? WHERE id = ?');
           $update->execute(array($post_title, $post_message, $categorie, $update_post));
-          var_dump($categorie);
-          //header('Location: index.php?action=article&id='.$update_post);
+          header('Location: index.php?action=article&id='.$update_post);
           }
           else {
             throw new \Exception('Veuilez remplir tout les champs');
