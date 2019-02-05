@@ -23,10 +23,14 @@ class ControllerAdmin {
     try {
       $cat = new Category();
       $category = $cat->listCategory();
+      $cat2 = new Category();
+      $category2 = $cat2->listCategory();
       $update = new Post();
       $post = $update->getPost();
       require'app/views/updatepost.php';
-      $post = $update->updatePost();
+      $update2 = new Post();
+      $post = $update2->updatePost();
+      
     }
     catch (\Exception $e) {
       echo $e->getMessage();
@@ -48,22 +52,12 @@ class ControllerAdmin {
 
   public function createPost() {
     try {
-      //$pic = new Post();
-      //$picture = $pic->imageUpload();
-      $create = new Post();
-      $post = $create->createPost();
-    }
-    catch (\Exception $e) {
-      echo $e->getMessage();
-    }
-  }
-
-  public function createScreen() {
-    try {
       $cat = new Category();
       $category = $cat->listCategory();
       $cat2 = new Category();
       $category2 = $cat2->listCategory();
+      $create = new Post();
+      $post = $create->createPost();
       require'app/views/createpost.php';
     }
     catch (\Exception $e) {

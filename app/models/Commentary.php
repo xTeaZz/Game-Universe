@@ -11,9 +11,11 @@ namespace Models;
     public function listCommentary() {
       $db = Database::getConnection();
       $postId = htmlspecialchars($_GET['id']);
-      $commentary = $db->prepare('SELECT *, comment.id AS c_id FROM comment INNER JOIN user ON comment.id_user = user.id WHERE id_post = ? AND id_parent = 0 ORDER BY comment.id DESC');
+      $commentary = $db->prepare('SELECT *, comment.id AS c_id FROM comment INNER JOIN user ON comment.id_user = user.id WHERE id_post = ? AND id_parent = 0 ORDER BY comment.id ASC');
       $commentary->execute(array($postId));
       return $commentary;
+
+
     }
 
 /*Permet de lister les commentaires signaler*/
@@ -122,9 +124,9 @@ namespace Models;
 
     public function listReply() {
       $db = Database::getConnection();
-      $parentId = htmlspecialchars($_GET['id']);
-      $reply = $db->prepare('SELECT * FROM comment INNER JOIN user ON id_user = user.id WHERE id_parent = ? ORDER BY comment.id DESC');
-      $reply->execute(array($parentId));
+      $postId = htmlspecialchars($_GET['id']);
+      $reply = $db->prepare('SELECT * FROM comment INNER JOIN user ON id_user = user.id WHERE id_parent != 0 AND id_post = ? ORDER BY comment.id ASC');
+      $reply->execute(array($postId));
       return $reply;
     }
 

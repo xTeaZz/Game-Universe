@@ -24,7 +24,7 @@
         <div class="card-body">
           <h5 class="card-title">Crée un article</h5>
           <p class="card-text">Crée un nouvel article</p>
-          <a href="?action=createscreen" class="btn btn-primary">Aller ici</a>
+          <a href="?action=createpost" class="btn btn-primary">Aller ici</a>
         </div>
       </div>
       <div class="card text-center titlestyle">

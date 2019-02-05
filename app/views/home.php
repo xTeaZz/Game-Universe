@@ -49,7 +49,7 @@
           ?>
             <?= $p['message']?>
           </p>
-          <a class="btn btn-primary" href="?action=article&id=<?= $p['id'] ?>">Lire l'article</a>
+          <a class="btn btn-primary size" href="?action=article&id=<?= $p['id'] ?>">Lire l'article</a>
         </div>
       </div>
     <?php } ?>

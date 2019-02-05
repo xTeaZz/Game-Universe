@@ -35,7 +35,6 @@
           <?php while($c = $category2->fetch()): ?>
             <option value = <?=$c['id']?>><?=$c['category_name']?></option>
           <?php endwhile; ?>
-          
           </select>
         </div>
         <input type="submit" class="btn btn-success" name="submit" value="Envoyer">

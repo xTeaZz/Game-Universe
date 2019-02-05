@@ -100,3 +100,9 @@
   width: 3em;
   margin-left: 0.5em;
 }
+
+@media screen and (max-width: 1220px) {
+  .size {
+    width: 2.75em;
+  }
+}

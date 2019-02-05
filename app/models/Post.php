@@ -37,25 +37,6 @@ namespace Models;
           throw new \Exception('Veuillez remplir tout les champs');
         }
       }
-      if(isset($_FILES['picture'])) {
-        var_dump($_FILES['picture']);
-        if($_FILES['picture']['size'] <= 2000000 || $_FILES['picture']['size'] == 0) {
-          $temporary = $_FILES['picture']['tmp_name'];
-          $extension = substr(strrchr ($_FILES['picture']['name'], "."), 1);
-          if($extension == "jpg" || $extension == "png" || $extension == "PNG" || $extension == "JPEG") {
-            $pictureName = $_SESSION['id'].'.'.'jpg';
-            $finalName = 'src/post/'.$pictureName;
-            $upload = move_uploaded_file($temporary, $finalName);
-          } else {
-            throw new \Exception('Le type de fichier est incorrect');
-          }
-        } else {
-          throw new \Exception("La taille de l'image ne doit pas dépasser 2Mb");
-        } 
-      }
-      else {
-        throw new \Exception('Une erreur est survenue');
-      }
     }
 
     /*Permet de modifier un article il récupere les informations de l'article puis les modifie*/
@@ -69,9 +50,13 @@ namespace Models;
           $post_title = htmlspecialchars($_POST['title']);
           $post_message =($_POST['postText']);
           $categorie = $_POST['categories'];
-          $update = $db->prepare('UPDATE post SET title = ?, message = ?, categorie = ? WHERE id = ?');
+          $update = $db->prepare('UPDATE post SET title = ?, message = ?, category_id = ? WHERE id = ?');
           $update->execute(array($post_title, $post_message, $categorie, $update_post));
-          header('Location: index.php?action=article&id='.$update_post);
+          var_dump($categorie);
+          //header('Location: index.php?action=article&id='.$update_post);
+          }
+          else {
+            throw new \Exception('Veuilez remplir tout les champs');
           }
         } else {
           throw new \Exception('Veuilez remplir tout les champs');

@@ -92,7 +92,7 @@
                     </div>
                   <a href="index.php?action=report&id=<?= $c['c_id'] ?>&postid=<?= $post['p_id'] ?>" class="btn btn-danger">Signaler</a>
                 </div>
-                <?php while ($r = $reply->fetch()) { ?>
+                <?php while ($r = $reply->fetch()) { var_dump($r['id_parent'], $c['c_id']); ?>
                   <div class="card">
                     <div class="card-header">
                       <?= $r['alias'] ?>
@@ -118,7 +118,6 @@
               </blockquote>
             </div>
             <?php } ?>
-            
           </div>
       </section>
       <?php require'footer.php' ?>

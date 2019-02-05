@@ -38,25 +38,11 @@
                 }
             }
             elseif ($_GET['action'] == 'createpost') {
-                if (isset($_SESSION['id'])) {
-                    if ($_SESSION['admin'] == 1) {
-                        $controller = new ControllerAdmin();
-                        $controller->createPost();
-                    }
-                    else {
-                        throw new \Exception("Vous n'êtes pas administrateur");
-                    }
-                }
-                else {
-                    throw new \Exception("Vous n'êtes pas administrateur");
-                }
-            }
-            elseif ($_GET['action'] == 'createscreen') {
                 session_start();
                 if (isset($_SESSION['id'])) {
                     if ($_SESSION['admin'] == 1) {
                         $controller = new ControllerAdmin();
-                        $controller->createScreen();
+                        $controller->createPost();
                     }
                     else {
                         throw new \Exception("Vous n'êtes pas administrateur");
@@ -151,14 +137,22 @@
                 }
             }
             elseif ($_GET['action'] == 'updatepost') {
+                session_start();
+                if (isset($_SESSION['id'])) {
+                    if ($_SESSION['admin'] == 1) {
                 if (isset($_GET['id']) && $_GET['id'] > 0) {
                     $controller = new ControllerAdmin();
                     $controller->updatePost();
             }
             else {
-                throw new \Exception('Auncune page trouvée');
+                throw new \Exception("Vous n'êtes pas administrateur");
+            }
+        }
+            else {
+                throw new \Exception("Vous n'êtes pas administrateur");
             }
             }
+        }
             elseif ($_GET['action'] == 'report') {
                 if (isset($_GET['id']) && $_GET['id'] > 0) {
                     $controller = new ControllerHome();
